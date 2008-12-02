@@ -1,0 +1,19 @@
+This extension searches in specified class, by multiple criterias defined in the settings file.
+The extension supports multipleclasses. Wich means that you could have several searchpages on the same extension.
+
+To go to one searchpage just point your browser to: http://www.yourdomain.com/attributefilterç/search/ident_of_class
+
+Require: Objectrelationfilter (if you gonna search in relation lists)
+Tested on: eZ Publish 4.0.1
+
+1. Download http://ez.no/developer/contribs/template_plugins/objectrelationfilter (if your not gonna use the search to search in relation lists you don`t need this).
+
+2. Upload the objecrelationfilter extension
+
+3. activate the objectrelationfilter
+
+4. Upload and activate extension.
+
+5. rename advancedsearch_default.ini.append.php to advancedsearch.ini.append.php
+
+6. config advancedsearch.ini.append.php to fit your needs.
