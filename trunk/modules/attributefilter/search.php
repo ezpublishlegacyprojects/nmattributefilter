@@ -25,7 +25,7 @@ if ( $search->checkClassIdent( $class_ident ) )
 	else
 	{
 		// if a previous search has been made in this session we use this data.
-		if ( $http->hasSessionVariable( 'searchdata' ) )
+		if ( $http->hasSessionVariable( 'searchdata_' . $class_ident ) )
 		{
 			$searchdata = $http->sessionVariable( 'searchdata_' . $class_ident );
 		}
@@ -38,26 +38,25 @@ if ( $search->checkClassIdent( $class_ident ) )
 	// if there is some searchdata
 	if ( $searchdata )
 	{
-	
+
 		// does the search
 		$result = $search->doSearch( $searchdata, $class_ident, $offset );
 		// setting the variables
 		$tpl->setVariable( 'result_all', $result[ "result_all" ] );
 		$tpl->setVariable( 'result_offset', $result[ "result_offset" ] );
 		$tpl->setVariable( 'page_limit', $ini->variable( $class_ident, 'SearchLimit' ) );
-		$tpl->setVariable( 'offset', $offset );
 	}
 	
 	// fetching search items for the form.
 	$tpl->setVariable( 'search_item_list', $search->fetchSearchItems( $class_ident ) );
 	$tpl->setVariable( 'searchdata', $searchdata );
 	$tpl->setVariable( 'class_ident', $class_ident );
+	$tpl->setVariable( 'offset', $offset );
 }
 else
 {
 	$tpl->setVariable( 'error', ezi18n( 'attributefilter', 'The class ident was not found' ) );
 }
-
 $Result[ 'path' ] = array( 
 						array( 'text'  => ezi18n( 'attributefilter', 'Search' ),
 								'url'  => '/'),
